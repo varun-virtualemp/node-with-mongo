@@ -22,3 +22,5 @@ public/adminer.php
 .vscode/*
 utils/constants.js
 public/images/user/*
+.env
+.package-lock.json

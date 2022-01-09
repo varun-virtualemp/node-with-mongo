@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer');
 const ObjectId = require('mongoose').Types.ObjectId;
 
-const {baseUrl, recordsPerPage, mailHost, mailPort, mailUsername, mailPassword} = require('../utils/constants');
+const baseUrl = process.env.BASE_URL;
+const recordsPerPage = process.env.RECORDS_PER_PAGE;
 
 exports.pagination = (currentPage, totalItems, moduleName) => {
     let prevPage = (currentPage !== 1 ? (currentPage - 1) : '');
@@ -21,11 +22,11 @@ exports.pagination = (currentPage, totalItems, moduleName) => {
 exports.sendEmail = async(from, to, subject, body) => {
     // create transporter object with smtp server details
     const transporter = nodemailer.createTransport({
-        host: mailHost,
-        port: mailPort,
+        host: process.env.MAIL_HOST,
+        port: process.env.MAIL_PORT,
         auth: {
-            user: mailUsername,
-            pass: mailPassword
+            user: process.env.MAIL_USERNAME,
+            pass: process.env.MAIL_PASSWORD
         }
     });
 

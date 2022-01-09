@@ -3,9 +3,8 @@ const jwt = require('jsonwebtoken');
 const {validationResult} = require('express-validator');
 
 const User = require('../models/user');
-const { notFound, handleSuccessResponse, unauthorizedRequest, badRequest, validationError, recordExists } = require('../utils/response-helper');
+const { notFound, handleSuccessResponse, badRequest, validationError, recordExists } = require('../utils/response-helper');
 const { pagination, isObjectIdValid } = require('../utils/helper');
-const { recordsPerPage } = require('../utils/constants');
 
 
 /**method to check whether login user is valid or not */
@@ -61,7 +60,7 @@ exports.getUsers = async (req, res, next) => {
     try {
         let {page, search} = req.query;
         const currentPage = parseInt(page) || 1;
-        const perPage = recordsPerPage;
+        const perPage = parseInt(process.env.RECORDS_PER_PAGE);
         let finalData = [];
         
         const query = { email: { $ne: 'testing@gmail.com' } }

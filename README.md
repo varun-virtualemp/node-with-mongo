@@ -12,12 +12,12 @@ MONGODB
 After you clone this project, do the following:
 
 ##### create a .env file
-```cp utils/constants-example.js utils/constansts.js```
+```cp .env-example .env```
 
 ##### install npm dependencies
 ```npm install```
 
-##### update the following configurations in your utils/constansts.js file as per your requirements
+##### update the following configurations in your .env file as per your requirements
 ```
 dbName = ''
 port = ''
@@ -27,4 +27,4 @@ port = ''
 ```http://your_local_url/api/buildData```
 
 ##### start backend server and watch for changes
-```nodemon app.js```
+```npm start```
